@@ -3,7 +3,7 @@ class Juggernaut extends Character{
     private int $resistance;
 
     public function __construct(string $type,string $name, int $hp, float $damage, int $level, int $numBattle, string $resistance){
-        parent::__construct($resistance);
+        parent::__construct($type, $name,  $hp,  $damage,  $level,  $numBattle);
         $this->resistance = $resistance;
         
     }

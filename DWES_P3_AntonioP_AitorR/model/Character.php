@@ -104,7 +104,4 @@ abstract class Character{
     }
 }
 
-
-
-
 ?>

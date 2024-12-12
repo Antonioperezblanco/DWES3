@@ -19,11 +19,7 @@ class Warrior extends Character{
 
         return $this;
     }
-
-    public function __toString(){
-        return parent:: __toString() . "Weapon: . $this->weapon";
-       }
-
+    
     public function aumentarDaño(){
         if ($this->weapon=="espada"){
             $newDamage = $this->getDamage()*1.2;
@@ -33,5 +29,8 @@ class Warrior extends Character{
             $this->setHp($newHp);
 
         }
+    }
+    function __toString(){
+        return parent::__toString() . "Type of weapon: $this->weapon";
     }
 }
