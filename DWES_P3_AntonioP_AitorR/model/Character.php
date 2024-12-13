@@ -7,7 +7,7 @@ abstract class Character{
     private int $level;
     private int $numBattle;
 
-    public function __construct(string $type,string $name, int $hp, float $damage, int $level = 0, int $numBattle){
+    public function __construct(string $type,string $name, int $hp, float $damage, int $numBattle,  int $level = 0){
         $this->type=$type;
         $this->name=$name;
         $this->hp=$hp;

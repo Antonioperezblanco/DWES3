@@ -1,4 +1,5 @@
 <?php
+include_once "./Character.php";
 
 class Mage extends Character{
     private bool $dodge;
@@ -34,14 +35,15 @@ class Mage extends Character{
         return parent:: __toString() . "Dodge: " . $this->dodge ? "Yes" : "NO" . "Health: $this->health";
        }
 
-       public function dodging(){
+       public function dodging(&$damage){
         $randomNumber = rand(0,1);
         if ($randomNumber == 0){
             $this->dodge = true;
-            return "You dodged the attack";
+            echo "You dodged the attack";
+            $damage = 0;
         }else{
             $this->dodge = false;
-            return "You didn't dodge the attack";
+            echo "You didn't dodge the attack";
         }
     }
     public function cure(){
@@ -56,5 +58,5 @@ class Mage extends Character{
     $this->setHp($newHp);
     }
 }
-    
+    $mago = new Mage("guerrero", "Aitor", 4,5,5,3,false, 100);
 ?>

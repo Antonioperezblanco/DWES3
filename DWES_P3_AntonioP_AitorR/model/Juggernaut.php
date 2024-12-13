@@ -2,7 +2,7 @@
 class Juggernaut extends Character{
     private int $resistance;
 
-    public function __construct(string $type,string $name, int $hp, float $damage, int $level, int $numBattle, string $resistance){
+    public function __construct(string $type,string $name, int $hp, float $damage, int $level, int $numBattle, int $resistance){
         parent::__construct($type, $name,  $hp,  $damage,  $level,  $numBattle);
         $this->resistance = $resistance;
         
@@ -15,7 +15,6 @@ class Juggernaut extends Character{
 
     public function setResistance($resistance){
         $this->resistance = $resistance;
-
         return $this;
     }
 
@@ -23,8 +22,8 @@ class Juggernaut extends Character{
         return parent:: __toString() . "resistance: . $this->resistance";
        }
 
-    public function reduceDamage($damage) {
-        $reducedDamage = $damage * 0.8;  
+    public function reduceDamage($resistance) {
+        $reducedDamage = $this->getDamage() * 0.8;  
         $newHp = $this->getHp() - $reducedDamage;
         $this->setHp($newHp);
     }

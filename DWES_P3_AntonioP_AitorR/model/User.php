@@ -2,10 +2,13 @@
 class User{
     private string $nickname;
     private string $password;
+    private string $email;
 
-    public function __construct(string $nickname, string $password){
+    public function __construct(string $nickname, string $email, string $password){
         $this->nickname=$nickname;
+        $this->email=$email;
         $this->password=$password;
+
     }
 
     public function getNickname(){
@@ -17,6 +20,15 @@ class User{
 
         return $this;
     }
+    public function getEmail(){
+        return $this->email;
+    }
+    public function setEmail($email){
+        $this->email = $email;
+        return $this;
+    }
+    
+    
 
     public function getPassword(){
         return $this->password;
@@ -27,9 +39,11 @@ class User{
 
         return $this;
     }
+
     public function __toString(){
-        return "Nickname: $this->nickname";
+        return "Nickname: $this->nickname, Email: $this->email";
     }
 }
+
 
 ?>
