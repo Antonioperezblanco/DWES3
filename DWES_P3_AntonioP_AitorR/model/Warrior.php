@@ -3,10 +3,9 @@
 class Warrior extends Character{
     private string $weapon;
 
-    public function __construct(string $type,string $name, int $hp, float $damage, int $level, int $numBattle, string $weapon){
-        parent::__construct($type, $name,  $hp,  $damage,  $level,  $numBattle);
+    public function __construct(string $type,string $name, int $level, int $numBattle, string $weapon){
+        parent::__construct($type, $name, rand(100,120), rand(30,40), $level, $numBattle);
         $this->weapon = $weapon;
-
         
     }
 

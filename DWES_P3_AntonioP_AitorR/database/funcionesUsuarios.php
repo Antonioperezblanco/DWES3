@@ -1,22 +1,5 @@
 <?php
 
-include_once "../model/User.php";
-
-function conectarBD(){
-    $server = "127.0.0.1";
-    $user = "root";
-    $password = "Sandia4you";
-    $db = "proyecto";
-
-    $conexion = new mysqli($server, $user, $password, $db);
-
-    if ($conexion->connect_error) {
-        die("Conexión fallida: " . $conexion->connect_error);
-    } else {
-        return $conexion;
-    }
-}
-
 function existeMail($email):bool{
 
     $sql = "SELECT email FROM usuario WHERE email = ?";
@@ -75,6 +58,26 @@ function verificarPassEmail($email, $pass){
     $p->bind_param("s", $email);
     $p->execute();
     $result = $p->get_result();
-    $passBD = $result->fetch_assoc();
+    if ($result->num_rows > 0) {
+        $passBD = $result->fetch_assoc();
         return password_verify($pass, $passBD["pass"]);
+    } else {
+        return false; 
     }
+}
+    function verificarPassName($nickname, $pass){
+        $sql = "SELECT pass FROM usuario WHERE nickname = ?";
+        $c= conectarBD();
+        $p = $c->prepare($sql);
+        $p->bind_param("s", $nickname);
+        $p->execute();
+        $result = $p->get_result();
+        if ($result->num_rows > 0) { 
+            $passBD = $result->fetch_assoc();
+            return password_verify($pass, $passBD["pass"]);
+        } else {
+            return false; 
+        }
+       
+    }
+?>

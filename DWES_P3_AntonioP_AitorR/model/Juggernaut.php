@@ -1,10 +1,11 @@
 <?php
+include_once "Character.php";
 class Juggernaut extends Character{
-    private int $resistance;
+    private float $resistance;
 
-    public function __construct(string $type,string $name, int $hp, float $damage, int $level, int $numBattle, int $resistance){
-        parent::__construct($type, $name,  $hp,  $damage,  $level,  $numBattle);
-        $this->resistance = $resistance;
+    public function __construct(string $type,string $name,  int $level = 0, int $numBattle = 0){
+        parent::__construct($type, $name,  rand(140,200),  rand(20,30),  $level,  $numBattle);
+        $this->resistance = rand(1, 4)/10;
         
     }
 
@@ -19,15 +20,14 @@ class Juggernaut extends Character{
     }
 
     public function __toString(){
-        return parent:: __toString() . "resistance: . $this->resistance";
+        return parent:: __toString() . "    Resistance: " . $this->resistance;
        }
 
-    public function reduceDamage($resistance) {
-        $reducedDamage = $this->getDamage() * 0.8;  
+    public function reduceDamage() {
+        $reducedDamage = $this->getDamage() * $this->resistance;  
         $newHp = $this->getHp() - $reducedDamage;
         $this->setHp($newHp);
     }
     
 }
-
 ?>

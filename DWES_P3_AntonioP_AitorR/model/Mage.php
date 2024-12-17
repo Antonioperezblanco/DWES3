@@ -5,11 +5,11 @@ class Mage extends Character{
     private bool $dodge;
     private int $health;
 
-    public function __construct(string $type,string $name, int $hp, float $damage, int $level, int $numBattle, bool $dodge, int $health){
-        parent::__construct($type, $name,  $hp,  $damage,  $level,  $numBattle);
+    public function __construct(string $type,string $name, int $level = 0, int $numBattle = 0){
+        parent::__construct($type, $name,  rand(60,100), rand(40,60),  $level,  $numBattle);
 
-        $this->dodge=$dodge;
-        $this->health=$health;
+        $this->dodge=(rand(0,1)) ? true : false;
+        $this->health=rand(10,30);
     }
 
     public function getDodge(){
@@ -36,20 +36,15 @@ class Mage extends Character{
        }
 
        public function dodging(&$damage){
-        $randomNumber = rand(0,1);
-        if ($randomNumber == 0){
-            $this->dodge = true;
-            echo "You dodged the attack";
+        if ($this->dodge){
             $damage = 0;
-        }else{
-            $this->dodge = false;
-            echo "You didn't dodge the attack";
+            echo "Mage dodged the attack!";
         }
     }
     public function cure(){
-    $cure = $this->health * 0.5;    
+        
     $currentHp = $this->getHp();   
-    $newHp = $currentHp + $cure; 
+    $newHp = $currentHp + $this->health; 
     
     if ($newHp > $this->health) {
         $newHp = $this->health;
@@ -58,5 +53,6 @@ class Mage extends Character{
     $this->setHp($newHp);
     }
 }
-    $mago = new Mage("guerrero", "Aitor", 4,5,5,3,false, 100);
+$m = new Mage ("mage", "carlos");
+echo $m;
 ?>

@@ -3,6 +3,9 @@ body {
     background-color: #f4f6f9;
     padding-top: 50px;
 }
+h3{
+    text-decoration: underline;
+}
 .form-container {
     max-width: 500px;
     margin: 0 auto;
@@ -24,6 +27,6 @@ body {
     top: 10px;
     cursor: pointer;
 }
-label {
+.cabecera {
     font-weight: bold;
 }
