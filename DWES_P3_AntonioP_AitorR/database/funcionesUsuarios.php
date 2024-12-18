@@ -24,8 +24,7 @@ function existeNombre($nickname):bool{
 
 }
 
-
-function insertarUsuario($usuario) {
+function insertarUsuario(User $usuario) {
     $sql = "INSERT INTO `usuario` (nickname, email, pass) VALUES (?, ?, ?)";
     $conexion = conectarBD(); 
     $stmt = $conexion->prepare($sql); 
@@ -45,6 +44,8 @@ function insertarUsuario($usuario) {
         echo "Error al insertar el usuario: " . $stmt->error . "<br>";
     } else {
         echo "Usuario insertado correctamente.<br>";
+        $id = $conexion->insert_id;
+        $usuario->setId($id);
     }
 
     $stmt->close();

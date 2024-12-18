@@ -1,29 +1,19 @@
 <?php
 abstract class Character{
-    private string $type;
     private string $name;
     private int $hp;
     private float $damage;
     private int $level;
     private int $numBattle;
+    private int $idUser;
 
-    public function __construct(string $type, string $name, int $hp, float $damage, int $numBattle, int $level = 0){
-        $this->type=$type;
+    public function __construct(string $name, int $hp, float $damage, int $numBattle = 0, int $level = 0, int $idUser){
         $this->name=$name;
         $this->hp=$hp;
         $this->damage=$damage;
         $this->level=$level;
         $this->numBattle=$numBattle;
-    }
-
-    public function getType(){
-        return $this->type;
-    }
-
-    public function setType($type){
-        $this->type = $type;
-
-        return $this;
+        $this->idUser=$idUser;
     }
 
     public function getName(){
@@ -77,7 +67,7 @@ abstract class Character{
     }
     
     public function __toString(){
-        return "Type: $this->type, Name: $this->name, HP: $this->hp, Damage: $this->damage, Level: $this->level, Number of Battle: $this->numBattle";
+        return "Name: $this->name, HP: $this->hp, Damage: $this->damage, Level: $this->level, Number of Battle: $this->numBattle";
     }
 
     function levelUp(){
@@ -101,6 +91,17 @@ abstract class Character{
             $this->setDamage($newDamage);
         }
     
+    }
+
+  
+    public function getIdUser(){
+        return $this->idUser;
+    }
+
+
+    public function setIdUser($idUser){
+        $this->idUser = $idUser;
+        return $this;
     }
 }   
 

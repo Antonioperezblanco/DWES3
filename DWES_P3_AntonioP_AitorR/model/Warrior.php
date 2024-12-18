@@ -1,10 +1,10 @@
 <?php
-
+include_once $_SERVER ["DOCUMENT_ROOT"] . "/DWES_P3_AntonioP_AitorR/model/Character.php";
 class Warrior extends Character{
     private string $weapon;
 
-    public function __construct(string $type,string $name, int $level, int $numBattle, string $weapon){
-        parent::__construct($type, $name, rand(100,120), rand(30,40), $level, $numBattle);
+    public function __construct(string $name, int $level, string $weapon,int $numBattle = 0){
+        parent::__construct($name, rand(100,120), rand(30,40), $numBattle);
         $this->weapon = $weapon;
         
     }

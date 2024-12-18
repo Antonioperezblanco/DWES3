@@ -6,7 +6,7 @@ include_once "../database/funcionesUsuarios.php";
 session_start();
 
 $user = $password = $passwordConf = $email = "";
-$userErr = $passwordErr = $confErr = $emailErr = "";
+$userErr = $passwordErr = $confErr = $emailErr = "";    
 $error = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -56,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     setcookie("user", $user, time() + 5 * 60);
 
     if (!$error) {
+        createTableUsuario();
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $_SESSION["u"] = $user;
         $_SESSION["email"] = $email;

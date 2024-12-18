@@ -1,12 +1,13 @@
 <?php
-include_once "./Character.php";
+include_once $_SERVER ["DOCUMENT_ROOT"] . "/DWES_P3_AntonioP_AitorR/model/Character.php";
+
 
 class Mage extends Character{
     private bool $dodge;
     private int $health;
 
-    public function __construct(string $type,string $name, int $level = 0, int $numBattle = 0){
-        parent::__construct($type, $name,  rand(60,100), rand(40,60),  $level,  $numBattle);
+    public function __construct(string $name, int $level = 0, int $numBattle = 0){
+        parent::__construct($name, rand(60,100), rand(40,60), $numBattle);
 
         $this->dodge=(rand(0,1)) ? true : false;
         $this->health=rand(10,30);
@@ -53,6 +54,4 @@ class Mage extends Character{
     $this->setHp($newHp);
     }
 }
-$m = new Mage ("mage", "carlos");
-echo $m;
 ?>

@@ -3,6 +3,7 @@ class User{
     private string $nickname;
     private string $password;
     private string $email;
+    private int $id;
 
     public function __construct(string $nickname, string $email, string $password){
         $this->nickname=$nickname;
@@ -42,6 +43,13 @@ class User{
 
     public function __toString(){
         return "Nickname: $this->nickname, Email: $this->email";
+    }
+
+   
+    public function setId($id){
+        $this->id = $id;
+
+        return $this;
     }
 }
 
